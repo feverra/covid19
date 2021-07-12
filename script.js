@@ -20,7 +20,11 @@ var chart = am4core.create("chartdiv", am4charts.XYChart);
 axios.get('datas.json').then(response => {
   chart.data = response.data.result.records
   chart.data.shift()
-  console.log(chart.data)
+  // console.log(chart.data)
+  let lastDate = new Date(chart.data[chart.data.length - 1].Date).toLocaleDateString('Th-th')
+  document.getElementById('lastDate').innerText = `ยอดตรวจโควิด
+  อัพเดตถึงวันที่ ${lastDate}`
+  console.log(lastDate)
   createChart()
 })
 
